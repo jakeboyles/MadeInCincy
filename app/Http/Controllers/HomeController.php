@@ -12,7 +12,7 @@ class HomeController extends Controller
 {
 
     /**
-     * Show the profile for the given user.
+     * Show the profile for the given user. Yay
      *
      * @param  int  $id
      * @return Response
