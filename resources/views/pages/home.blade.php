@@ -1,91 +1,6 @@
 @extends('app')
 
 
-@section('styles')
-<style>
-
-body {
-    font-family: 'Roboto', sans-serif;
-}
-#map { height: 100%;width:100%;position:fixed;top:0;left:0; }
-
-.leaflet-popup {
-    margin-bottom:40px;
-}
-
-.btn {
-  background-color:#F1301A;
-  border:2px solid #F1301A;
-}
-
-.alert-success {
-    background-color: #dff0d8;
-    border-color: #d6e9c6;
-    color: #3c763d;
-    font-size: 20px !important;
-    margin:0px auto;
-    margin-top: 50px;
-    position: relative;
-    z-index: 99999;
-    width:70%;
-}
-
-.alert-success h2 {
-  font-size:18px;
-}
-
-.nav {
-    height:80px;
-    background-color:rgba(0,0,0,.8);
-    width:100%;
-    position:fixed;
-    top:0;
-    left:0;
-    z-index:99999;
-    color:#fff;
-    font-weight:300;
-}
-
-.nav h2 {
-    font-weight:300;
-}
-
-.nav .btn {
-    margin-top:15px;
-    padding:10px 30px;
-}
-
-.leaflet-left {
-    left: 0;
-    top: 90px;
-}
-
-.modal {
-    z-index:9999999;
-}
-
-.nav h2 {
-    margin-top:20px;
-}
-
-.logo span {
-  font-weight:600;
-  font-size:33px;
-}
-
-.alert-danger {
-    background-color: #f2dede;
-    border-color: #ebccd1;
-    color: #a94442;
-    position: relative;
-    z-index: 9999;
-    margin-top:100px;
-}
-
-</style>
-@endsection
-
-
 @section('content')
 
 @if($errors->any())
@@ -113,13 +28,7 @@ body {
 
  <div id="map"></div>
 
- @foreach($companies as $company)
-
- <h3>{{$company->name}}</h3>
-
- @endforeach
-
-
+ <a target="_blank" class="jake" href="https://twitter.com/jakeboyles/">By @JakeBoyles</a>
 
 
  <!-- Modal -->
@@ -209,65 +118,3 @@ body {
 @endsection
 
 
-
-@section('scripts')
-
-<script type="text/javascript">
-$( document ).ready(function() {
-
-var map = L.map('map').setView([39.1300, -84.5167], 12);
-
-L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
-    attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
-    maxZoom: 18,
-    id: 'jakeboyles.j0ajipap',
-    accessToken: 'pk.eyJ1IjoiamFrZWJveWxlcyIsImEiOiJNcGJpWXhJIn0.ONDjoScLnbU4_VVfXmeIAA'
-}).addTo(map);
-
-
-var options = {
-    'keepSpiderfied':true
-};
-
-
-var oms = new OverlappingMarkerSpiderfier(map, options);
-
-
-var greenIcon = L.icon({
-    iconUrl: 'images/icon.png',
-
-    iconSize:     [45, 55], // size of the icon
-    shadowSize:   [50, 64], // size of the shadow
-    iconAnchor:   [22, 54], // point of the icon which will correspond to marker's location
-    shadowAnchor: [4, 62],  // the same for the shadow
-    popupAnchor:  [-3, -86] // point from which the popup should open relative to the iconAnchor
-});
-
-
-var popup = new L.Popup();
-oms.addListener('click', function(marker) {
-  popup.setContent(marker.desc);
-  popup.setLatLng(marker.getLatLng());
-  map.openPopup(popup);
-});
-
-
-$.ajax({url: "/companies", success: function(result){
-    result.forEach(function(point){
-
-
-          var loc = new L.LatLng(point.lat,point.long);
-          var marker = new L.Marker(loc, {icon: greenIcon});
-
-          marker.desc = "<b>"+point.name+"</b><br>"+point.description+"</br><a target='_blank' href='"+point.url+"'>"+point.url+"</a>";
-          map.addLayer(marker);
-          oms.addMarker(marker); 
-
-    })
-}});
-
-});
-
-</script>
-
-@endsection
