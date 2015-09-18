@@ -56,7 +56,7 @@ class HomeController extends Controller
         $company->save();
 
         $data = array(
-        'name' => "New Listing",
+        'name' => $company->name,
         );
 
         Mail::send('email.new', $data, function ($message) {

@@ -34,18 +34,9 @@
 </head>
 <body>
 
-<div class="nav container-fluid">
-<div class="col-xs-6 logo">
-<h2>Cincy<span>Tech</span></h2>
-</div>
-
-<div class="col-xs-6">
-  <a class="pull-right btn btn-primary" data-toggle="modal" data-target="#myModal" href="#">Add +</a>
-</div>
-</div>
 <div class="container-fluid main-container">
     <div>
-       New Email
+       New Listing: {{$name}}
     </div>
 </div>
 

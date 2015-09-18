@@ -21,7 +21,11 @@
         <script src="http://cdn.leafletjs.com/leaflet-0.7.5/leaflet.js"></script>
         <script src="http://jawj.github.io/OverlappingMarkerSpiderfier-Leaflet/bin/oms.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+        <script src="js/main.js"></script>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" type="text/css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+        <link rel="stylesheet" href="css/main.css" />
 
     @yield('styles')
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -35,11 +39,15 @@
 <body>
 
 <div class="nav container-fluid">
-<div class="col-xs-6 logo">
+<div class="col-md-4 col-xs-6 logo">
 <h2>Cincy<span>Tech</span></h2>
 </div>
 
-<div class="col-xs-6">
+<div class="col-md-4 hidden-xs hidden-sm">
+<h3>Made with <i class="fa fa-heart"></i> in Cincinnati</h3>
+</div>
+
+<div class="col-md-4 col-xs-6">
   <a class="pull-right btn btn-primary" data-toggle="modal" data-target="#myModal" href="#">Add +</a>
 </div>
 </div>
