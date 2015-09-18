@@ -160,7 +160,7 @@ body {
 
 
             <div class="form-group">
-                <label class="col-md-4 control-label">Lat *</label>
+                <label class="col-md-4 control-label">Lat * <a target="_blank" href="http://www.latlong.net/convert-address-to-lat-long.html">Try This</a></label>
 
                 <div class="col-md-6">
                 <input type="text" class="form-control" name="lat"
