@@ -5,9 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Cincy.Tech</title>
+    <title>Cincy.Tech: Let the world see how we have grown!</title>
     @section('meta_keywords')
-        <meta name="keywords" content="men,sales,craigslist,competitor,cincinnati"/>
     @show @section('meta_author')
         <meta name="author" content="Jake Boyles"/>
     @show @section('meta_description')
