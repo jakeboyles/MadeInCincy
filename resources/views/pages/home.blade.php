@@ -103,6 +103,7 @@ body {
 
 
             <input type="hidden" name="_token" value="{{ csrf_token() }}">
+            <P>* Locations will not be shown on the map until they have been approved by an admin.</P>
 
             <div class="form-group">
                 <label class="col-md-4 control-label">Name *</label>
