@@ -38,6 +38,7 @@ class HomeController extends Controller
             'description' => 'required',
             'lat' => 'required',
             'long' => 'required',
+            'url' => 'required',
         ]);
 
         if ($validator->fails()) {
@@ -52,6 +53,6 @@ class HomeController extends Controller
         $company->status = NULL;
         $company->save();
 
-        return Redirect('/')->with('message', 'User Saved');
+        return Redirect('/')->with('message', 'Thanks for adding a listing. It will show on the map once it is approved!');
     }
 }

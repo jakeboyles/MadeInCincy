@@ -13,6 +13,27 @@ body {
     margin-bottom:40px;
 }
 
+.btn {
+  background-color:#F1301A;
+  border:2px solid #F1301A;
+}
+
+.alert-success {
+    background-color: #dff0d8;
+    border-color: #d6e9c6;
+    color: #3c763d;
+    font-size: 20px !important;
+    margin:0px auto;
+    margin-top: 50px;
+    position: relative;
+    z-index: 99999;
+    width:70%;
+}
+
+.alert-success h2 {
+  font-size:18px;
+}
+
 .nav {
     height:80px;
     background-color:rgba(0,0,0,.8);
@@ -47,6 +68,11 @@ body {
     margin-top:20px;
 }
 
+.logo span {
+  font-weight:600;
+  font-size:33px;
+}
+
 .alert-danger {
     background-color: #f2dede;
     border-color: #ebccd1;
@@ -73,6 +99,15 @@ body {
             @endforeach
         </ul>
     </div>
+@endif
+
+
+@if(Session::has('message'))
+    <div class="alert alert-success alert-dismissible fade in" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+         <h2>{{ Session::get('message') }}</h2>
+    </div>
+
 @endif
 
 
@@ -141,7 +176,16 @@ body {
                 <div class="col-md-6">
                 <input type="text" class="form-control" name="long"
                            value="">
+                </div>
+            </div>
 
+
+             <div class="form-group">
+                <label class="col-md-4 control-label">URL * (http://example.com)</label>
+
+                <div class="col-md-6">
+                <input type="text" class="form-control" name="url"
+                           value="">
                 </div>
             </div>
 
@@ -189,6 +233,17 @@ var options = {
 var oms = new OverlappingMarkerSpiderfier(map, options);
 
 
+var greenIcon = L.icon({
+    iconUrl: 'images/icon.png',
+
+    iconSize:     [45, 55], // size of the icon
+    shadowSize:   [50, 64], // size of the shadow
+    iconAnchor:   [22, 54], // point of the icon which will correspond to marker's location
+    shadowAnchor: [4, 62],  // the same for the shadow
+    popupAnchor:  [-3, -86] // point from which the popup should open relative to the iconAnchor
+});
+
+
 var popup = new L.Popup();
 oms.addListener('click', function(marker) {
   popup.setContent(marker.desc);
@@ -202,8 +257,9 @@ $.ajax({url: "/companies", success: function(result){
 
 
           var loc = new L.LatLng(point.lat,point.long);
-          var marker = new L.Marker(loc);
-          marker.desc = "<b>"+point.name+"</b><br>"+point.description;
+          var marker = new L.Marker(loc, {icon: greenIcon});
+
+          marker.desc = "<b>"+point.name+"</b><br>"+point.description+"</br><a target='_blank' href='"+point.url+"'>"+point.url+"</a>";
           map.addLayer(marker);
           oms.addMarker(marker); 
 

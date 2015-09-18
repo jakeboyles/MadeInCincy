@@ -35,11 +35,11 @@
 <body>
 
 <div class="nav container-fluid">
-<div class="col-md-4">
-<h2>Made in Cincy</h2>
+<div class="col-xs-6 logo">
+<h2>Cincy<span>Tech</span></h2>
 </div>
 
-<div class="col-md-2 col-md-offset-6">
+<div class="col-xs-6">
   <a class="pull-right btn btn-primary" data-toggle="modal" data-target="#myModal" href="#">Add +</a>
 </div>
 </div>
