@@ -40,11 +40,10 @@ oms.addListener('click', function(marker) {
 $.ajax({url: "/companies", success: function(result){
     result.forEach(function(point){
 
-
           var loc = new L.LatLng(point.lat,point.long);
           var marker = new L.Marker(loc, {icon: greenIcon});
 
-          marker.desc = "<b>"+point.name+"</b><br>"+point.description+"</br><a target='_blank' href='"+point.url+"'>"+point.url+"</a>";
+          marker.desc = "<b>"+point.name+"</b><p class='content'>"+point.description+"</br><a target='_blank' href='"+point.url+"'>"+point.url+"</a></p>";
           map.addLayer(marker);
           oms.addMarker(marker); 
 
