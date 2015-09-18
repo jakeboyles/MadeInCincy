@@ -46,8 +46,8 @@
 <h3>Made with <i class="fa fa-heart"></i> in Cincinnati</h3>
 </div>
 
-<div class="col-md-4 col-xs-6">
-  <a class="pull-right btn btn-primary" data-toggle="modal" data-target="#myModal" href="#">Add +</a>
+<div class="col-md-4 col-xs-6 right">
+  <a class="pull-right btn btn-primary" data-toggle="modal" data-target="#myModal" href="#">Add <i class="fa fa-heart"></i></a>
 </div>
 </div>
 <div class="container-fluid main-container">
