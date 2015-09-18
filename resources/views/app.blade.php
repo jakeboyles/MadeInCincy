@@ -12,7 +12,7 @@
         <meta name="author" content="Jake Boyles"/>
     @show @section('meta_description')
         <meta name="description"
-              content="Where men buy, sell and trade online. Looking for video games, electronics, car parts or more? Then you need to look no further!"/>
+              content="Let the world see how we have grown!"/>
     @show
         <link href='http://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
         <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
