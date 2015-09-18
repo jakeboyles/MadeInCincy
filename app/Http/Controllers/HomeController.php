@@ -6,6 +6,7 @@ use App\User;
 use Validator;
 use App\Company;
 use Illuminate\Http\Request;
+use Mail;
 
 
 class HomeController extends Controller
@@ -53,6 +54,18 @@ class HomeController extends Controller
         $company->status = NULL;
         $company->url = $request->url;
         $company->save();
+
+        $data = array(
+        'name' => "New Listing",
+        );
+
+        Mail::send('email.new', $data, function ($message) {
+
+            $message->from('jake@jibdesigns.com', 'New Listing');
+
+            $message->to('jake@jibdesigns.com')->subject('New Listing');
+
+        });
 
         return Redirect('/')->with('message', 'Thanks for adding a listing. It will show on the map once it is approved!');
     }
