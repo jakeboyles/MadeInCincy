@@ -51,6 +51,7 @@ class HomeController extends Controller
         $company->lat = $request->lat;
         $company->long = $request->long;
         $company->status = NULL;
+        $company->url = $request->url;
         $company->save();
 
         return Redirect('/')->with('message', 'Thanks for adding a listing. It will show on the map once it is approved!');
