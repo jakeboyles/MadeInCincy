@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class MakeStuff extends Migration
+class AddCategories extends Migration
 {
     /**
      * Run the migrations.
@@ -12,10 +12,10 @@ class MakeStuff extends Migration
      */
     public function up()
     {
-        Schema::create('cache', function($table) {
-            $table->string('key')->unique();
-            $table->text('value');
-            $table->integer('expiration');
+
+        Schema::create('categories', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('type');
         });
     }
 

@@ -8,7 +8,7 @@ use Illuminate\Auth\Passwords\CanResetPassword;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
 
-class Company extends Model implements AuthenticatableContract, CanResetPasswordContract
+class Category extends Model implements AuthenticatableContract, CanResetPasswordContract
 {
     use Authenticatable, CanResetPassword;
 
@@ -17,14 +17,14 @@ class Company extends Model implements AuthenticatableContract, CanResetPassword
      *
      * @var string
      */
-    protected $table = 'companies';
+    protected $table = 'categories';
 
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
-    protected $fillable = ['lat', 'long', 'title', 'description'];
+    protected $fillable = ['type'];
 
     /**
      * The attributes excluded from the model's JSON form.
@@ -34,9 +34,9 @@ class Company extends Model implements AuthenticatableContract, CanResetPassword
     protected $hidden = [];
 
 
-    public function category()
+    public function company()
     {
-        return $this->belongsTo('App\Category');
+        return $this->hasMany('App\Company');
     }
 
 

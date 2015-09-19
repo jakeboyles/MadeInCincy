@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class MakeStuff extends Migration
+class AddCategoryFk extends Migration
 {
     /**
      * Run the migrations.
@@ -12,10 +12,11 @@ class MakeStuff extends Migration
      */
     public function up()
     {
-        Schema::create('cache', function($table) {
-            $table->string('key')->unique();
-            $table->text('value');
-            $table->integer('expiration');
+        Schema::table('companies', function($table)
+        {
+            $table->integer('category_id')->unsigned();
+            $table->foreign('category_id')->references('id')->on('categories');
+            $table->timestamps();
         });
     }
 

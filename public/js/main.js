@@ -18,8 +18,30 @@ var options = {
 var oms = new OverlappingMarkerSpiderfier(map, options);
 
 
-var greenIcon = L.icon({
+var companyIcon = L.icon({
     iconUrl: 'images/icon.png',
+
+    iconSize:     [45, 55], // size of the icon
+    shadowSize:   [50, 64], // size of the shadow
+    iconAnchor:   [22, 54], // point of the icon which will correspond to marker's location
+    shadowAnchor: [4, 62],  // the same for the shadow
+    popupAnchor:  [-3, -86] // point from which the popup should open relative to the iconAnchor
+});
+
+
+var vcIcon = L.icon({
+    iconUrl: 'images/money.png',
+
+    iconSize:     [45, 55], // size of the icon
+    shadowSize:   [50, 64], // size of the shadow
+    iconAnchor:   [22, 54], // point of the icon which will correspond to marker's location
+    shadowAnchor: [4, 62],  // the same for the shadow
+    popupAnchor:  [-3, -86] // point from which the popup should open relative to the iconAnchor
+});
+
+
+var acceleratorIcon = L.icon({
+    iconUrl: 'images/accIcon.png',
 
     iconSize:     [45, 55], // size of the icon
     shadowSize:   [50, 64], // size of the shadow
@@ -41,7 +63,23 @@ $.ajax({url: "/companies", success: function(result){
     result.forEach(function(point){
 
           var loc = new L.LatLng(point.lat,point.long);
-          var marker = new L.Marker(loc, {icon: greenIcon});
+
+          if(point.category_id==1)
+          {
+          var marker = new L.Marker(loc, {icon: companyIcon});
+          }
+          else if(point.category_id==2)
+          {
+          var marker = new L.Marker(loc, {icon: vcIcon});
+          }
+          else if(point.category_id==3)
+          {
+          var marker = new L.Marker(loc, {icon: acceleratorIcon});
+          }
+          else
+          {
+          var marker = new L.Marker(loc, {icon: companyIcon});
+          }
 
           marker.desc = "<b>"+point.name+"</b><p class='content'>"+point.description+"</br><a target='_blank' href='"+point.url+"'>"+point.url+"</a></p>";
           map.addLayer(marker);

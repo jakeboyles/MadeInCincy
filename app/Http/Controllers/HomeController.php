@@ -7,6 +7,7 @@ use Validator;
 use App\Company;
 use Illuminate\Http\Request;
 use Mail;
+use App\Category;
 
 
 class HomeController extends Controller
@@ -26,7 +27,7 @@ class HomeController extends Controller
 
     public function getCompanies()
     {
-        $companies = Company::where('status',1)->get();
+        $companies = Company::where('status',1)->with('category')->get();
 
         return response()->json($companies);
     }

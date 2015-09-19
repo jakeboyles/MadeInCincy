@@ -2,20 +2,29 @@
 
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Eloquent\Model;
+use App\Category;
 
-class DatabaseSeeder extends Seeder
-{
-    /**
-     * Run the database seeds.
-     *
-     * @return void
-     */
+class DatabaseSeeder extends Seeder {
+
     public function run()
     {
-        Model::unguard();
+        $this->call('UserTableSeeder');
 
-        // $this->call('UserTableSeeder');
-
-        Model::reguard();
+        $this->command->info('User table seeded!');
     }
+
+}
+
+
+class UserTableSeeder extends Seeder {
+
+    public function run()
+    {
+        DB::table('categories')->delete();
+
+        Category::create(['type' => 'Company']);
+        Category::create(['type' => 'Accelerator']);
+        Category::create(['type' => 'VC']);
+    }
+
 }
