@@ -16,7 +16,6 @@ class AddCategoryFk extends Migration
         {
             $table->integer('category_id')->unsigned();
             $table->foreign('category_id')->references('id')->on('categories');
-            $table->timestamps();
         });
     }
 
