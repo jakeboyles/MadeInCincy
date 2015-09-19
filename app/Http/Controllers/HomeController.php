@@ -9,7 +9,6 @@ use Illuminate\Http\Request;
 use Mail;
 use App\Category;
 
-
 class HomeController extends Controller
 {
 
@@ -22,7 +21,8 @@ class HomeController extends Controller
     public function index()
     {
         $companies = Company::all();
-        return view('pages.home', ['companies'=>$companies]);
+        $types = Category::all();
+        return view('pages.home', ['companies'=>$companies, 'types'=>$types]);
     }
 
     public function getCompanies()
@@ -41,6 +41,7 @@ class HomeController extends Controller
             'lat' => 'required',
             'long' => 'required',
             'url' => 'required',
+            'type' => 'required',
         ]);
 
         if ($validator->fails()) {
@@ -54,6 +55,7 @@ class HomeController extends Controller
         $company->long = $request->long;
         $company->status = NULL;
         $company->url = $request->url;
+        $company->category_id = $request->type;
         $company->save();
 
         $data = array(

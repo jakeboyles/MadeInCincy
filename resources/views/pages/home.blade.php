@@ -69,6 +69,19 @@
 
 
             <div class="form-group">
+                <label class="col-md-4 control-label">Type of listing *</label>
+
+                <div class="col-md-6">
+                    <select class="form-control" name="type">
+                    @foreach($types as $type)
+                    <option value="{{$type->id}}">{{$type->type}}</option>
+                    @endforeach
+                    </select>
+                </div>
+            </div>
+
+
+            <div class="form-group">
                 <label class="col-md-4 control-label">Lat * <a target="_blank" href="http://www.latlong.net/convert-address-to-lat-long.html">Try This</a></label>
 
                 <div class="col-md-6">
