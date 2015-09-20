@@ -26,6 +26,6 @@ class MakeStuff extends Migration
      */
     public function down()
     {
-        //
+        Schema::drop('cache');
     }
 }

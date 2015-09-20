@@ -50,6 +50,27 @@ var acceleratorIcon = L.icon({
     popupAnchor:  [-3, -86] // point from which the popup should open relative to the iconAnchor
 });
 
+var universityIcon = L.icon({
+    iconUrl: 'images/school.png',
+
+    iconSize:     [45, 55], // size of the icon
+    shadowSize:   [50, 64], // size of the shadow
+    iconAnchor:   [22, 54], // point of the icon which will correspond to marker's location
+    shadowAnchor: [4, 62],  // the same for the shadow
+    popupAnchor:  [-3, -86] // point from which the popup should open relative to the iconAnchor
+});
+
+
+var coworkIcon = L.icon({
+    iconUrl: 'images/coworking.png',
+
+    iconSize:     [45, 55], // size of the icon
+    shadowSize:   [50, 64], // size of the shadow
+    iconAnchor:   [22, 54], // point of the icon which will correspond to marker's location
+    shadowAnchor: [4, 62],  // the same for the shadow
+    popupAnchor:  [-3, -86] // point from which the popup should open relative to the iconAnchor
+});
+
 
 var popup = new L.Popup();
 oms.addListener('click', function(marker) {
@@ -89,32 +110,41 @@ $(".search").click(function(){
   $.ajax({url: "/search/"+search, success: function(result){
     result.forEach(function(point){
 
-                var loc = new L.LatLng(point.lat,point.long);
+      var loc = new L.LatLng(point.lat,point.long);
 
-                if(point.category_id==1)
-                {
-                var marker = new L.Marker(loc, {icon: companyIcon});
-                }
-                else if(point.category_id==2)
-                {
-                var marker = new L.Marker(loc, {icon: vcIcon});
-                }
-                else if(point.category_id==3)
-                {
-                var marker = new L.Marker(loc, {icon: acceleratorIcon});
-                }
-                else
-                {
-                var marker = new L.Marker(loc, {icon: companyIcon});
-                }
+      if(point.category.type=='company')
+      {
+      var marker = new L.Marker(loc, {icon: companyIcon});
+      }
+      else if(point.category.type=='VC')
+      {
+      var marker = new L.Marker(loc, {icon: vcIcon});
+      }
+      else if(point.category.type=='Accelerator')
+      {
+      var marker = new L.Marker(loc, {icon: acceleratorIcon});
+      }
+      else if(point.category.type=='University')
+      {
+      var marker = new L.Marker(loc, {icon: universityIcon});
+      }
+      else if(point.category.type=='Coworking Space')
+      {
+      var marker = new L.Marker(loc, {icon: coworkIcon});
+      }
+      else
+      {
+      var marker = new L.Marker(loc, {icon: companyIcon});
+      }
 
-                marker.desc = "<b>"+point.name+"</b><p class='content'>"+point.description+"</br><a target='_blank' href='"+point.url+"'>"+point.url+"</a></p>";
-                markers.addLayer(marker);
-                oms.addMarker(marker); 
+      marker.desc = "<b>"+point.name+"</b><p class='content'>"+point.description+"</br><a target='_blank' href='"+point.url+"'>"+point.url+"</a></p>";
+      markers.addLayer(marker);
+      oms.addMarker(marker); 
 
-          })
+    })
 
-          map.addLayer(markers);
+    map.addLayer(markers);
+    
   }});
 
 return false;
@@ -130,32 +160,40 @@ $(".filterAction").on("click",function(){
        $.ajax({url: "/companies/type/"+$(this).data('category'), success: function(result){
           result.forEach(function(point){
 
-                var loc = new L.LatLng(point.lat,point.long);
+          var loc = new L.LatLng(point.lat,point.long);
 
-                if(point.category_id==1)
-                {
-                var marker = new L.Marker(loc, {icon: companyIcon});
-                }
-                else if(point.category_id==2)
-                {
-                var marker = new L.Marker(loc, {icon: vcIcon});
-                }
-                else if(point.category_id==3)
-                {
-                var marker = new L.Marker(loc, {icon: acceleratorIcon});
-                }
-                else
-                {
-                var marker = new L.Marker(loc, {icon: companyIcon});
-                }
+          if(point.category.type=='company')
+          {
+          var marker = new L.Marker(loc, {icon: companyIcon});
+          }
+          else if(point.category.type=='VC')
+          {
+          var marker = new L.Marker(loc, {icon: vcIcon});
+          }
+          else if(point.category.type=='Accelerator')
+          {
+          var marker = new L.Marker(loc, {icon: acceleratorIcon});
+          }
+          else if(point.category.type=='University')
+          {
+          var marker = new L.Marker(loc, {icon: universityIcon});
+          }
+          else if(point.category.type=='Coworking Space')
+          {
+          var marker = new L.Marker(loc, {icon: coworkIcon});
+          }
+          else
+          {
+          var marker = new L.Marker(loc, {icon: companyIcon});
+          }
 
-                marker.desc = "<b>"+point.name+"</b><p class='content'>"+point.description+"</br><a target='_blank' href='"+point.url+"'>"+point.url+"</a></p>";
-                markers.addLayer(marker);
-                oms.addMarker(marker); 
+          marker.desc = "<b>"+point.name+"</b><p class='content'>"+point.description+"</br><a target='_blank' href='"+point.url+"'>"+point.url+"</a></p>";
+          markers.addLayer(marker);
+          oms.addMarker(marker); 
 
-          })
+        })
 
-          map.addLayer(markers);
+        map.addLayer(markers);
       }});
 
 })

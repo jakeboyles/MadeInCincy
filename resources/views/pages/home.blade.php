@@ -42,16 +42,31 @@
       </div>
 
       <div class="filterSingle">
-        <a href="#" data-category='3' class="filterAction">
+        <a href="#" data-category='2' class="filterAction">
           <img src="images/accIcon.png">
           <h3>Accelerator</h3>
         </a>
       </div>
 
       <div class="filterSingle">
-        <a href="#" data-category='2' class="filterAction">
+        <a href="#" data-category='3' class="filterAction">
           <img src="images/money.png">
           <h3>VC</h3>
+        </a>
+      </div>
+
+      <div class="filterSingle">
+        <a href="#" data-category='4' class="filterAction">
+          <img src="images/school.png">
+          <h3>University</h3>
+        </a>
+      </div>
+
+
+      <div class="filterSingle">
+        <a href="#" data-category='5' class="filterAction">
+          <img src="images/coworking.png">
+          <h3>Coworking Space</h3>
         </a>
       </div>
 
