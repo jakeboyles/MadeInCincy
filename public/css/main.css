@@ -241,5 +241,26 @@ a:hover {
     transform: scale(0.9);
   }
 }
+.leaflet-popup-content > h2 {
+  color: #f1341e;
+  font-size: 22px;
+  padding: 0 20px;
+}
+.allJobs {
+  padding: 0px 20px;
+}
+.allJobs h2 {
+  color: #f1341e;
+  font-size: 20px;
+  font-weight: 600;
+}
+.allJobs h4 {
+  font-size: 16px;
+  margin: 0;
+  padding: 0;
+}
+.allJobs .singleJob {
+  margin-bottom: 20px;
+}
 
 /*# sourceMappingURL=main.css.map */

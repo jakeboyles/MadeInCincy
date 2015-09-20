@@ -27,7 +27,7 @@ class HomeController extends Controller
 
     public function getCompanies()
     {
-        $companies = Company::where('status',1)->with('category')->get();
+        $companies = Company::where('status',1)->with('category','jobs')->get();
 
         return response()->json($companies);
     }
@@ -35,7 +35,7 @@ class HomeController extends Controller
 
     public function getCompaniesByType($id)
     {
-        $companies = Company::where('status',1)->where('category_id',$id)->with('category')->get();
+        $companies = Company::where('status',1)->where('category_id',$id)->with('category','jobs')->get();
 
         return response()->json($companies);
     }
@@ -44,7 +44,7 @@ class HomeController extends Controller
     public function getBySearch($request)
     {
         $companies = Company::search($request)
-            ->with('category')
+            ->with('category','jobs')
             ->get();
 
         return response()->json($companies);

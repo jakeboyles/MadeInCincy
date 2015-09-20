@@ -48,5 +48,10 @@ class Company extends Model implements AuthenticatableContract, CanResetPassword
         return $this->belongsTo('App\Category');
     }
 
+    public function jobs()
+    {
+        return $this->hasMany('App\Job');
+    }
+
 
 }
