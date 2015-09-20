@@ -22,7 +22,7 @@ var addToMap = function(result)
 
           var loc = new L.LatLng(point.lat,point.long);
 
-          if(point.category.type=='company')
+          if(point.category.type=='Company')
           {
           var marker = new L.Marker(loc, {icon: companyIcon});
           }
@@ -48,7 +48,7 @@ var addToMap = function(result)
           }
 
 
-          if(point.category.type=='company')
+          if(point.category.type=='Company')
           {
             var jobsList = "<div class='allJobs'><h2>Jobs</h2>";
             var jobs = point.jobs;
