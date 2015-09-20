@@ -143,7 +143,7 @@ $(".search").click(function(){
       if(jobs.length>0)
       {
         jobs.forEach(function(job){
-          jobsList += '<div class="singleJob"><h4>'+job.name+'</h4><a href="'+job.url+'">'+job.url+'</a></div>';
+          jobsList += '<div class="singleJob"><h4>'+job.name+'</h4><a target="_blank" href="'+job.url+'">'+job.url+'</a></div>';
         });
 
         jobsList += "</div>";
