@@ -205,7 +205,23 @@ $(".filterAction").on("click",function(){
           var marker = new L.Marker(loc, {icon: companyIcon});
           }
 
-          marker.desc = "<b>"+point.name+"</b><p class='content'>"+point.description+"</br><a target='_blank' href='"+point.url+"'>"+point.url+"</a></p>";
+          var jobsList = "<div class='allJobs'><h2>Jobs</h2>";
+          var jobs = point.jobs;
+
+          if(jobs.length>0)
+          {
+            jobs.forEach(function(job){
+              jobsList += '<div class="singleJob"><h4>'+job.name+'</h4><a target="_blank" href="'+job.url+'">'+job.url+'</a></div>';
+            });
+
+            jobsList += "</div>";
+          }
+          else
+          {
+            jobsList += '<p>No Jobs Listed</p></div>';
+          }
+
+          marker.desc = "<b>"+point.name+"</b><p class='content'>"+point.description+"</br><a target='_blank' href='"+point.url+"'>"+point.url+"</a></p>"+jobsList;
           markers.addLayer(marker);
           oms.addMarker(marker); 
 
@@ -239,7 +255,24 @@ $.ajax({url: "/companies", success: function(result){
           var marker = new L.Marker(loc, {icon: companyIcon});
           }
 
-          marker.desc = "<b>"+point.name+"</b><p class='content'>"+point.description+"</br><a target='_blank' href='"+point.url+"'>"+point.url+"</a></p>";
+
+          var jobsList = "<div class='allJobs'><h2>Jobs</h2>";
+          var jobs = point.jobs;
+
+          if(jobs.length>0)
+          {
+            jobs.forEach(function(job){
+              jobsList += '<div class="singleJob"><h4>'+job.name+'</h4><a target="_blank" href="'+job.url+'">'+job.url+'</a></div>';
+            });
+
+            jobsList += "</div>";
+          }
+          else
+          {
+            jobsList += '<p>No Jobs Listed</p></div>';
+          }
+
+          marker.desc = "<b>"+point.name+"</b><p class='content'>"+point.description+"</br><a target='_blank' href='"+point.url+"'>"+point.url+"</a></p>"+jobsList;
           markers.addLayer(marker);
           oms.addMarker(marker); 
 
