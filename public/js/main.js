@@ -143,7 +143,7 @@ $(".search").click(function(){
       if(jobs.length>0)
       {
         jobs.forEach(function(job){
-          jobsList += '<div class="singleJob"><h4>'+job.name+'</h4><a target="_blank" href="'+job.url+'">'+job.url+'</a></div>';
+          jobsList += '<div class="singleJob"><h4>'+job.name+'</h4><a target="_blank" href="'+job.url+'">View Listing</a></div>';
         });
 
         jobsList += "</div>";
@@ -211,7 +211,7 @@ $(".filterAction").on("click",function(){
           if(jobs.length>0)
           {
             jobs.forEach(function(job){
-              jobsList += '<div class="singleJob"><h4>'+job.name+'</h4><a target="_blank" href="'+job.url+'">'+job.url+'</a></div>';
+              jobsList += '<div class="singleJob"><h4>'+job.name+'</h4><a target="_blank" href="'+job.url+'">View Listing</a></div>';
             });
 
             jobsList += "</div>";
@@ -262,7 +262,7 @@ $.ajax({url: "/companies", success: function(result){
           if(jobs.length>0)
           {
             jobs.forEach(function(job){
-              jobsList += '<div class="singleJob"><h4>'+job.name+'</h4><a target="_blank" href="'+job.url+'">View Listing</a></div>';
+              jobsList += '<div class="singleJob"><h4>'+job.name+'</h4><a target="_blank" href="View Listing">View Listing</a></div>';
             });
 
             jobsList += "</div>";
