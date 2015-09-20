@@ -242,3 +242,17 @@ a:hover {
     }
   }
 }
+
+.fa-heart {
+   animation-name: pulse;
+  animation-duration: 1s;
+  animation-fill-mode: both;
+  animation-iteration-count: infinite;
+}
+
+
+@keyframes pulse {
+  0% {transform: scale(1);}
+  50% {transform: scale(1.2);}
+  100% {transform: scale(.9);}
+}
