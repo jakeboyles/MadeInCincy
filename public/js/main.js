@@ -15,6 +15,65 @@ var options = {
 };
 
 
+var addToMap = function(result)
+{
+
+  result.forEach(function(point){
+
+          var loc = new L.LatLng(point.lat,point.long);
+
+          if(point.category.type=='company')
+          {
+          var marker = new L.Marker(loc, {icon: companyIcon});
+          }
+          else if(point.category.type=='VC')
+          {
+          var marker = new L.Marker(loc, {icon: vcIcon});
+          }
+          else if(point.category.type=='Accelerator')
+          {
+          var marker = new L.Marker(loc, {icon: acceleratorIcon});
+          }
+          else if(point.category.type=='University')
+          {
+          var marker = new L.Marker(loc, {icon: universityIcon});
+          }
+          else if(point.category.type=='Coworking Space')
+          {
+          var marker = new L.Marker(loc, {icon: coworkIcon});
+          }
+          else
+          {
+          var marker = new L.Marker(loc, {icon: companyIcon});
+          }
+
+          var jobsList = "<div class='allJobs'><h2>Jobs</h2>";
+          var jobs = point.jobs;
+
+          if(jobs.length>0)
+          {
+            jobs.forEach(function(job){
+              jobsList += '<div class="singleJob"><h4>'+job.name+'</h4><a target="_blank" href="'+job.url+'">View Listing</a></div>';
+            });
+
+            jobsList += "</div>";
+          }
+          else
+          {
+            jobsList += '<p>No Jobs Listed</p></div>';
+          }
+
+          marker.desc = "<b>"+point.name+"</b><p class='content'>"+point.description+"</br><a target='_blank' href='"+point.url+"'>"+point.url+"</a></p>"+jobsList;
+          markers.addLayer(marker);
+          oms.addMarker(marker); 
+
+        })
+
+        map.addLayer(markers);
+
+}
+
+
 var oms = new OverlappingMarkerSpiderfier(map, options);
 
 
@@ -108,60 +167,8 @@ $(".search").click(function(){
    markers = new L.FeatureGroup();
 
   $.ajax({url: "/search/"+search, success: function(result){
-    result.forEach(function(point){
 
-      var loc = new L.LatLng(point.lat,point.long);
-
-      if(point.category.type=='company')
-      {
-      var marker = new L.Marker(loc, {icon: companyIcon});
-      }
-      else if(point.category.type=='VC')
-      {
-      var marker = new L.Marker(loc, {icon: vcIcon});
-      }
-      else if(point.category.type=='Accelerator')
-      {
-      var marker = new L.Marker(loc, {icon: acceleratorIcon});
-      }
-      else if(point.category.type=='University')
-      {
-      var marker = new L.Marker(loc, {icon: universityIcon});
-      }
-      else if(point.category.type=='Coworking Space')
-      {
-      var marker = new L.Marker(loc, {icon: coworkIcon});
-      }
-      else
-      {
-      var marker = new L.Marker(loc, {icon: companyIcon});
-      }
-
-      var jobsList = "<div class='allJobs'><h2>Jobs</h2>";
-      var jobs = point.jobs;
-
-      if(jobs.length>0)
-      {
-        jobs.forEach(function(job){
-          jobsList += '<div class="singleJob"><h4>'+job.name+'</h4><a target="_blank" href="'+job.url+'">View Listing</a></div>';
-        });
-
-        jobsList += "</div>";
-      }
-      else
-      {
-        jobsList += '<p>No Jobs Listed</p></div>';
-      }
-
-      console.log(jobsList);
-
-      marker.desc = "<b>"+point.name+"</b><p class='content'>"+point.description+"</br><a target='_blank' href='"+point.url+"'>"+point.url+"</a></p>"+jobsList;
-      markers.addLayer(marker);
-      oms.addMarker(marker); 
-
-    })
-
-    map.addLayer(markers);
+    addToMap(result);
     
   }});
 
@@ -176,109 +183,16 @@ $(".filterAction").on("click",function(){
        markers = new L.FeatureGroup();
 
        $.ajax({url: "/companies/type/"+$(this).data('category'), success: function(result){
-          result.forEach(function(point){
+          
+          addToMap(result);
 
-          var loc = new L.LatLng(point.lat,point.long);
-
-          if(point.category.type=='company')
-          {
-          var marker = new L.Marker(loc, {icon: companyIcon});
-          }
-          else if(point.category.type=='VC')
-          {
-          var marker = new L.Marker(loc, {icon: vcIcon});
-          }
-          else if(point.category.type=='Accelerator')
-          {
-          var marker = new L.Marker(loc, {icon: acceleratorIcon});
-          }
-          else if(point.category.type=='University')
-          {
-          var marker = new L.Marker(loc, {icon: universityIcon});
-          }
-          else if(point.category.type=='Coworking Space')
-          {
-          var marker = new L.Marker(loc, {icon: coworkIcon});
-          }
-          else
-          {
-          var marker = new L.Marker(loc, {icon: companyIcon});
-          }
-
-          var jobsList = "<div class='allJobs'><h2>Jobs</h2>";
-          var jobs = point.jobs;
-
-          if(jobs.length>0)
-          {
-            jobs.forEach(function(job){
-              jobsList += '<div class="singleJob"><h4>'+job.name+'</h4><a target="_blank" href="'+job.url+'">View Listing</a></div>';
-            });
-
-            jobsList += "</div>";
-          }
-          else
-          {
-            jobsList += '<p>No Jobs Listed</p></div>';
-          }
-
-          marker.desc = "<b>"+point.name+"</b><p class='content'>"+point.description+"</br><a target='_blank' href='"+point.url+"'>"+point.url+"</a></p>"+jobsList;
-          markers.addLayer(marker);
-          oms.addMarker(marker); 
-
-        })
-
-        map.addLayer(markers);
       }});
 
 })
 
 
 $.ajax({url: "/companies", success: function(result){
-    result.forEach(function(point){
-
-          var loc = new L.LatLng(point.lat,point.long);
-
-          if(point.category_id==1)
-          {
-          var marker = new L.Marker(loc, {icon: companyIcon});
-          }
-          else if(point.category_id==2)
-          {
-          var marker = new L.Marker(loc, {icon: vcIcon});
-          }
-          else if(point.category_id==3)
-          {
-          var marker = new L.Marker(loc, {icon: acceleratorIcon});
-          }
-          else
-          {
-          var marker = new L.Marker(loc, {icon: companyIcon});
-          }
-
-
-          var jobsList = "<div class='allJobs'><h2>Jobs</h2>";
-          var jobs = point.jobs;
-
-          if(jobs.length>0)
-          {
-            jobs.forEach(function(job){
-              jobsList += '<div class="singleJob"><h4>'+job.name+'</h4><a target="_blank" href="View Listing">View Listing</a></div>';
-            });
-
-            jobsList += "</div>";
-          }
-          else
-          {
-            jobsList += '<p>No Jobs Listed</p></div>';
-          }
-
-          marker.desc = "<b>"+point.name+"</b><p class='content'>"+point.description+"</br><a target='_blank' href='"+point.url+"'>"+point.url+"</a></p>"+jobsList;
-          markers.addLayer(marker);
-          oms.addMarker(marker); 
-
-    })
-
-    map.addLayer(markers);
+    addToMap(result);
 }});
 
 });
