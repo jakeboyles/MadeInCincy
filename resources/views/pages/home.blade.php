@@ -28,6 +28,36 @@
 
  <div id="map"></div>
 
+
+<div class="wholeSide">
+  <a class="filter" href="#"><i class="fa fa-gear"></i></a>
+   <div class="sidebar">
+
+      <div class="filterSingle">
+        <a href="#" data-category='1' class="filterAction">
+          <img src="images/icon.png">
+          <h3>Company</h3>
+        </a>
+      </div>
+
+      <div class="filterSingle">
+        <a href="#" data-category='3' class="filterAction">
+          <img src="images/accIcon.png">
+          <h3>Accelerator</h3>
+        </a>
+      </div>
+
+      <div class="filterSingle">
+        <a href="#" data-category='2' class="filterAction">
+          <img src="images/money.png">
+          <h3>VC</h3>
+        </a>
+      </div>
+
+
+   </div>
+ </div>
+
  <a target="_blank" class="jake" href="https://twitter.com/jakeboyles/">By @JakeBoyles</a>
 
 

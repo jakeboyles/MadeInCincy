@@ -157,3 +157,52 @@ a:hover {
     z-index: 9999;
     margin-top:100px;
 }
+
+
+.filter {
+  background-color: #000;
+  border-radius: 10px 0 0 10px;
+  color: #fff;
+  font-size: 30px;
+  left: 25px;
+  margin-left: -90px;
+  padding: 10px 20px;
+  position: absolute;
+  top: 0;
+}
+
+.filter:active, .filter:focus {
+  color:#fff;
+}
+
+
+.wholeSide{
+   position: fixed;
+   right: -200px;
+   top:90px;
+   height: 90%;
+   background-color:#000;
+}
+
+.sidebar {
+    right: -200px;
+    width: 200px;
+    border-radius:10px 0px 0px 10px;
+
+    .filterSingle {
+    width:100%;
+    display:block;
+    padding-left:20px;
+    margin-top:30px;
+
+    img {
+      display:inline;
+    }
+
+    h3 {
+      display:inline;
+      font-size:16px;
+      color:#fff;
+    }
+  }
+}

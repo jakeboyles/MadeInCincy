@@ -16,6 +16,10 @@
 $app->get('/', 'HomeController@index');
 
 
+$app->get('/companies/type/{id}', 'HomeController@getCompaniesByType');
+
+
 $app->get('/companies', 'HomeController@getCompanies');
+
 
 $app->post('/company/store', 'HomeController@store');

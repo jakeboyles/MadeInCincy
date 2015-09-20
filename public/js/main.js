@@ -59,6 +59,62 @@ oms.addListener('click', function(marker) {
 });
 
 
+var markers = new L.FeatureGroup();
+
+
+$(".filter").click(function(){
+  if(!$(this).hasClass('open'))
+  {
+    $('.wholeSide').css("right",'0px');
+    $(this).addClass('open')
+  }
+  else
+  {
+    $('.wholeSide').css("right",'-200px');
+    $(this).removeClass('open')
+  }
+})
+
+
+$(".filterAction").on("click",function(){
+       map.removeLayer(markers);
+       markers = [];
+       markers = new L.FeatureGroup();
+
+       $.ajax({url: "/companies/type/"+$(this).data('category'), success: function(result){
+          result.forEach(function(point){
+
+                var loc = new L.LatLng(point.lat,point.long);
+
+                if(point.category_id==1)
+                {
+                var marker = new L.Marker(loc, {icon: companyIcon});
+                }
+                else if(point.category_id==2)
+                {
+                var marker = new L.Marker(loc, {icon: vcIcon});
+                }
+                else if(point.category_id==3)
+                {
+                var marker = new L.Marker(loc, {icon: acceleratorIcon});
+                }
+                else
+                {
+                var marker = new L.Marker(loc, {icon: companyIcon});
+                }
+
+                marker.desc = "<b>"+point.name+"</b><p class='content'>"+point.description+"</br><a target='_blank' href='"+point.url+"'>"+point.url+"</a></p>";
+                markers.addLayer(marker);
+                oms.addMarker(marker); 
+
+          })
+
+          map.addLayer(markers);
+      }});
+
+})
+
+
 $.ajax({url: "/companies", success: function(result){
     result.forEach(function(point){
 
@@ -82,10 +138,12 @@ $.ajax({url: "/companies", success: function(result){
           }
 
           marker.desc = "<b>"+point.name+"</b><p class='content'>"+point.description+"</br><a target='_blank' href='"+point.url+"'>"+point.url+"</a></p>";
-          map.addLayer(marker);
+          markers.addLayer(marker);
           oms.addMarker(marker); 
 
     })
+
+    map.addLayer(markers);
 }});
 
 });

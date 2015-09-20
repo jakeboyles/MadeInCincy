@@ -32,6 +32,14 @@ class HomeController extends Controller
         return response()->json($companies);
     }
 
+
+    public function getCompaniesByType($id)
+    {
+        $companies = Company::where('status',1)->where('category_id',$id)->with('category')->get();
+
+        return response()->json($companies);
+    }
+
     public function store(Request $request)
     {
 
