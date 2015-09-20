@@ -60,6 +60,7 @@ class HomeController extends Controller
 
     public function getBySearch($request)
     {
+        $request = urldecode($request);
         $companies = Company::search($request)
             ->with('category','jobs')
             ->get();

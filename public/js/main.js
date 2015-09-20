@@ -56,7 +56,7 @@ var addToMap = function(result)
             if(jobs.length>0)
             {
               jobs.forEach(function(job){
-                jobsList += '<div class="singleJob"><h4>'+job.name+'</h4><a target="_blank" href="'+job.url+'">View Listing</a></div>';
+                jobsList += '<div class="singleJob"><h4>'+job.job_name+'</h4><a target="_blank" href="'+job.url+'">View Listing</a></div>';
               });
 
               jobsList += "</div>";

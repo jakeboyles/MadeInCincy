@@ -16,7 +16,7 @@ class AddJobs extends Migration
             $table->increments('id');
             $table->integer('company_id')->unsigned();
             $table->foreign('company_id')->references('id')->on('companies');
-            $table->string('name');
+            $table->string('job_name');
             $table->string('url');
             $table->timestamps();
         });

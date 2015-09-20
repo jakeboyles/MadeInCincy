@@ -16,9 +16,13 @@ class Company extends Model implements AuthenticatableContract, CanResetPassword
 
     protected $searchable = [
         'columns' => [
+            'jobs.job_name' => 80,
             'name' => 10,
             'description' => 10,
-        ]
+        ],
+        'joins' => [
+            'jobs' => ['companies.id','jobs.company_id'],
+        ],
     ];
 
     /**
