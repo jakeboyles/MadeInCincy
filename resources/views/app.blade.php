@@ -47,7 +47,7 @@
 </div>
 
 <div class="col-md-4 col-xs-6 right">
-  <a class="pull-right btn btn-primary" data-toggle="modal" data-target="#myModal" href="#">Add <i class="fa fa-heart"></i></a>
+  <a class="pull-right btn btn-primary" data-toggle="modal" data-target="#myModal" href="#">Add Listing <i class="fa fa-heart"></i></a>
 </div>
 </div>
 <div class="container-fluid main-container">
