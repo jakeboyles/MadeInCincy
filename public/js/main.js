@@ -47,20 +47,28 @@ var addToMap = function(result)
           var marker = new L.Marker(loc, {icon: companyIcon});
           }
 
-          var jobsList = "<div class='allJobs'><h2>Jobs</h2>";
-          var jobs = point.jobs;
 
-          if(jobs.length>0)
+          if(point.category.type=='company')
           {
-            jobs.forEach(function(job){
-              jobsList += '<div class="singleJob"><h4>'+job.name+'</h4><a target="_blank" href="'+job.url+'">View Listing</a></div>';
-            });
+            var jobsList = "<div class='allJobs'><h2>Jobs</h2>";
+            var jobs = point.jobs;
 
-            jobsList += "</div>";
+            if(jobs.length>0)
+            {
+              jobs.forEach(function(job){
+                jobsList += '<div class="singleJob"><h4>'+job.name+'</h4><a target="_blank" href="'+job.url+'">View Listing</a></div>';
+              });
+
+              jobsList += "</div>";
+            }
+            else
+            {
+              jobsList += '<p>No Jobs Listed</p></div>';
+            }
           }
           else
           {
-            jobsList += '<p>No Jobs Listed</p></div>';
+            jobsList = "";
           }
 
           marker.desc = "<b>"+point.name+"</b><p class='content'>"+point.description+"</br><a target='_blank' href='"+point.url+"'>"+point.url+"</a></p>"+jobsList;
