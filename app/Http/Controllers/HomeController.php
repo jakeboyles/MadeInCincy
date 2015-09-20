@@ -40,6 +40,23 @@ class HomeController extends Controller
         return response()->json($companies);
     }
 
+    public function getCompaniesWithJobs()
+    {
+        $companies = Company::where('status',1)->with('category','jobs')->get();
+
+        $companiesWithJobs = [];
+
+        foreach($companies as $company)
+        {
+            if($company->jobs()->count()>0)
+            {
+                array_push($companiesWithJobs,$company);
+            }
+        }
+
+        return response()->json($companiesWithJobs);
+    }
+
 
     public function getBySearch($request)
     {

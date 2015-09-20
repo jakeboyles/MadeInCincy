@@ -120,10 +120,12 @@ a:hover {
   margin-top: 23px;
   text-align: center;
 }
-.filterAction {
+.filterAction,
+.getJobs {
   transition: scale .5s;
 }
-.filterAction:hover img {
+.filterAction:hover img,
+.getJobs:hover img {
   -webkit-transform: scale(1.2);
   transform: scale(1.2);
 }
@@ -164,7 +166,7 @@ a:hover {
   right: -200px;
   width: 200px;
   border-radius: 10px 0px 0px 10px;
-  min-height: 550px;
+  min-height: 600px;
   overflow: scroll;
 }
 .sidebar h2 {

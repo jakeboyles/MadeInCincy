@@ -185,6 +185,20 @@ return false;
 });
 
 
+$(".getJobs").on("click",function(){
+
+    map.removeLayer(markers);
+       markers = [];
+       markers = new L.FeatureGroup();
+
+       $.ajax({url: "/companies/jobs", success: function(result){
+          
+          addToMap(result);
+
+      }});
+})
+
+
 $(".filterAction").on("click",function(){
        map.removeLayer(markers);
        markers = [];

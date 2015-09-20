@@ -71,6 +71,16 @@
       </div>
 
 
+      <div class="filterSingle">
+        <a href="#" data-category='5' class="getJobs">
+          <img src="images/jobs.png">
+          <h3>Jobs</h3>
+        </a>
+      </div>
+
+
+
+
       <div class="searchDiv">
         <input type="text" class="searchBox" name="search" placeholder="I'm Looking For...">
         <button type="submit" class="search btn btn-primary">Search</button>
