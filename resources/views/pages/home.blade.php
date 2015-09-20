@@ -22,7 +22,6 @@
         <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
          <h2>{{ Session::get('message') }}</h2>
     </div>
-
 @endif
 
 
@@ -32,6 +31,8 @@
 <div class="wholeSide">
   <a class="filter" href="#"><i class="fa fa-gear"></i></a>
    <div class="sidebar">
+
+      <h2>Filters</h2>
 
       <div class="filterSingle">
         <a href="#" data-category='1' class="filterAction">
@@ -55,6 +56,12 @@
       </div>
 
 
+      <div class="searchDiv">
+        <input type="text" class="searchBox" name="search" placeholder="I'm Looking For...">
+        <button type="submit" class="search btn btn-primary">Search</button>
+      </div>
+
+
    </div>
  </div>
 
@@ -73,11 +80,7 @@
       </div>
       <div class="modal-body">
 
-     
-
-
             <input type="hidden" name="_token" value="{{ csrf_token() }}">
-            <P>* Locations will not be shown on the map until they have been approved by an admin.</P>
 
             <div class="form-group">
                 <label class="col-md-4 control-label">Name *</label>
@@ -115,8 +118,7 @@
                 <label class="col-md-4 control-label">Lat * <a target="_blank" href="http://www.latlong.net/convert-address-to-lat-long.html">Try This</a></label>
 
                 <div class="col-md-6">
-                <input type="text" class="form-control" name="lat"
-                           value="">
+                <input type="text" class="form-control" name="lat" value="">
 
                 </div>
             </div>
@@ -124,10 +126,8 @@
 
             <div class="form-group">
                 <label class="col-md-4 control-label">Long *</label>
-
                 <div class="col-md-6">
-                <input type="text" class="form-control" name="long"
-                           value="">
+                <input type="text" class="form-control" name="long" value="">
                 </div>
             </div>
 
@@ -136,14 +136,13 @@
                 <label class="col-md-4 control-label">URL * (http://example.com)</label>
 
                 <div class="col-md-6">
-                <input type="text" class="form-control" name="url"
-                           value="">
+                <input type="text" class="form-control" name="url" value="">
                 </div>
             </div>
 
 
 
-
+            <P>* Locations will not be shown on the map until they have been approved by an admin.</P>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

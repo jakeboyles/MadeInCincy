@@ -23,3 +23,5 @@ $app->get('/companies', 'HomeController@getCompanies');
 
 
 $app->post('/company/store', 'HomeController@store');
+
+$app->get('/search/{search}','HomeController@getBySearch');

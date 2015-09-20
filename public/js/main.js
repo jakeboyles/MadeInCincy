@@ -76,6 +76,52 @@ $(".filter").click(function(){
 })
 
 
+$(".search").click(function(){
+
+  var search = $(".searchBox").val();
+
+  search = encodeURIComponent(search);
+
+   map.removeLayer(markers);
+   markers = [];
+   markers = new L.FeatureGroup();
+
+  $.ajax({url: "/search/"+search, success: function(result){
+    result.forEach(function(point){
+
+                var loc = new L.LatLng(point.lat,point.long);
+
+                if(point.category_id==1)
+                {
+                var marker = new L.Marker(loc, {icon: companyIcon});
+                }
+                else if(point.category_id==2)
+                {
+                var marker = new L.Marker(loc, {icon: vcIcon});
+                }
+                else if(point.category_id==3)
+                {
+                var marker = new L.Marker(loc, {icon: acceleratorIcon});
+                }
+                else
+                {
+                var marker = new L.Marker(loc, {icon: companyIcon});
+                }
+
+                marker.desc = "<b>"+point.name+"</b><p class='content'>"+point.description+"</br><a target='_blank' href='"+point.url+"'>"+point.url+"</a></p>";
+                markers.addLayer(marker);
+                oms.addMarker(marker); 
+
+          })
+
+          map.addLayer(markers);
+  }});
+
+return false;
+
+});
+
+
 $(".filterAction").on("click",function(){
        map.removeLayer(markers);
        markers = [];

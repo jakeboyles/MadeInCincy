@@ -40,6 +40,16 @@ class HomeController extends Controller
         return response()->json($companies);
     }
 
+
+    public function getBySearch($request)
+    {
+        $companies = Company::search($request)
+            ->with('category')
+            ->get();
+
+        return response()->json($companies);
+    }
+
     public function store(Request $request)
     {
 

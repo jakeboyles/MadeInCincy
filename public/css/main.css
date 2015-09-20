@@ -120,6 +120,13 @@ a:hover {
   margin-top: 23px;
   text-align: center;
 }
+.filterAction {
+  transition: scale .5s;
+}
+.filterAction:hover img {
+  -webkit-transform: scale(1.2);
+  transform: scale(1.2);
+}
 .logo span {
   font-weight: 600;
   font-size: 33px;
@@ -133,7 +140,7 @@ a:hover {
   margin-top: 100px;
 }
 .filter {
-  background-color: #000;
+  background-color: rgba(0, 0, 0, 0.8);
   border-radius: 10px 0 0 10px;
   color: #fff;
   font-size: 30px;
@@ -152,21 +159,44 @@ a:hover {
   right: -200px;
   top: 90px;
   height: 90%;
-  background-color: #000;
+  background-color: rgba(0, 0, 0, 0.8);
 }
 .sidebar {
   right: -200px;
   width: 200px;
   border-radius: 10px 0px 0px 10px;
 }
+.sidebar h2 {
+  margin-left: 10%;
+  color: #fff;
+  font-weight: 400;
+  border-bottom: 4px solid #000000;
+  padding-bottom: 8px;
+  font-size: 24px;
+  width: 80%;
+}
+.sidebar .searchDiv {
+  position: absolute;
+  bottom: 60px;
+  margin-left: 10%;
+  width: 85%;
+}
+.sidebar .searchDiv input {
+  padding: 5px 10px;
+  width: 100%;
+}
+.sidebar .searchDiv button {
+  margin-top: 10px;
+}
 .sidebar .filterSingle {
   width: 100%;
   display: block;
   padding-left: 20px;
-  margin-top: 30px;
+  margin-top: 20px;
 }
 .sidebar .filterSingle img {
   display: inline;
+  max-width: 35px;
 }
 .sidebar .filterSingle h3 {
   display: inline;
