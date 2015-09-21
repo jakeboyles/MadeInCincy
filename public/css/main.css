@@ -168,6 +168,7 @@ a:hover {
   border-radius: 10px 0px 0px 10px;
   min-height: 540px;
   overflow: scroll;
+  padding-top: 10px;
 }
 .sidebar h2 {
   margin-left: 10%;

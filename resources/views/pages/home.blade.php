@@ -32,8 +32,6 @@
   <a class="filter" href="#"><i class="fa fa-gear"></i></a>
    <div class="sidebar">
 
-      <h2>Filters</h2>
-
       <div class="filterSingle">
         <a href="#" data-category='1' class="filterAction">
           <img src="images/icon.png">
