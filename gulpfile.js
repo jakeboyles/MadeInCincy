@@ -12,5 +12,7 @@ var elixir = require('laravel-elixir');
  */
 
 elixir(function(mix) {
-    mix.less('main.less');
+    mix.less('main.less')
+        .scripts(['main.js'])
+        .copy('resources/assets/images', 'public/images');
 });
