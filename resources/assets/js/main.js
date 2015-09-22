@@ -73,7 +73,7 @@ var addToMap = function(result)
 
           marker.desc = "<b>"+point.name+"</b><p class='content'>"+point.description+"</br><a target='_blank' href='"+point.url+"'>"+point.url+"</a></p>"+jobsList;
           markers.addLayer(marker);
-          oms.addMarker(marker); 
+          oms.addMarker(marker);
 
         })
 
@@ -177,7 +177,7 @@ $(".search").click(function(){
   $.ajax({url: "/search/"+search, success: function(result){
 
     addToMap(result);
-    
+
   }});
 
 return false;
@@ -192,7 +192,7 @@ $(".getJobs").on("click",function(){
        markers = new L.FeatureGroup();
 
        $.ajax({url: "/companies/jobs", success: function(result){
-          
+
           addToMap(result);
 
       }});
@@ -205,7 +205,7 @@ $(".filterAction").on("click",function(){
        markers = new L.FeatureGroup();
 
        $.ajax({url: "/companies/type/"+$(this).data('category'), success: function(result){
-          
+
           addToMap(result);
 
       }});
@@ -218,3 +218,4 @@ $.ajax({url: "/companies", success: function(result){
 }});
 
 });
+//# sourceMappingURL=all.js.map

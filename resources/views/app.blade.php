@@ -48,6 +48,14 @@
     </div>
   </div>
 
+  <div class="col-md-4 col-xs-6 right">
+    <a class="hidden-xs hidden-sm pull-right btn btn-primary" data-toggle="modal" data-target="#myModal" href="#">Add Listing <i class="fa fa-heart"></i></a>
+     <a class="visible-xs-12 visible-sm-12 hidden-md hidden-lg hidden-xl pull-right btn btn-primary" data-toggle="modal" data-target="#myModal" href="#">Add <i class="fa fa-heart"></i></a>
+     <a href="https://twitter.com/share" class="hidden-xs hidden-sm twitter-share-button" data-text="Help us map #StartupCincy!" data-via="jakeboyles" data-hashtags="StartupCincy">Tweet</a>
+  <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+
+  </div>
+  </div>
   <div class="container-fluid main-container">
     <div>
       @yield('content')
