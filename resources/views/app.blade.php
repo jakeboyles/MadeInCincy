@@ -62,7 +62,6 @@
     </div>
   </div>
 
-<<<<<<< HEAD
 <!-- Start of Woopra Code -->
 <script>
 (function(){
@@ -78,9 +77,7 @@ woopra.track();
 
 
 <script>
-=======
-  <script>
->>>>>>> 46d528757fe3f36dcbb18d0e8ec01dab89e313d8
+
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
   m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
