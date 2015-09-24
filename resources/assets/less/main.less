@@ -7,6 +7,10 @@ body {
     margin-bottom:40px;
 }
 
+.personButton {
+  margin-left:20px;
+}
+
 .btn {
   background-color:#F1301A;
   border:2px solid #F1301A;
@@ -41,7 +45,7 @@ body {
     position:fixed;
     top:0;
     left:0;
-    z-index:99999;
+    z-index:55;
     color:#fff;
     font-weight:300;
 }
@@ -53,6 +57,18 @@ body {
 .nav .btn {
     margin-top:15px;
     padding:10px 30px;
+}
+
+.nav .btn.hidden-lg {
+  padding:10px;
+
+  i {
+    margin-left:0;
+  }
+}
+
+.nav .personMobile {
+  margin-right:10px;
 }
 
 .leaflet-left {
@@ -96,6 +112,10 @@ a:hover {
     border-radius:10px 10px 0px 0px;
 }
 
+.leaflet-top, .leaflet-bottom {
+  z-index:55;
+}
+
   .leaflet-popup-close-button {
     color:#fff !important;
     margin-top:2px;
@@ -127,7 +147,7 @@ a:hover {
 
 
 .modal {
-    z-index:9999999;
+    z-index:200;
 }
 
 .nav { 
@@ -189,6 +209,10 @@ a:hover {
    right: -200px;
    top:90px;
    background-color:rgba(0,0,0,.8);
+}
+
+.modal-backdrop {
+    z-index: 56;
 }
 
 .sidebar {
@@ -287,6 +311,34 @@ a:hover {
 }
 
 
+.allPeople {
+  padding:0px 20px;
+
+  h2 {
+    color: #f1341e;
+    font-size: 20px;
+    font-weight: 600;
+  }
+
+  h4 {
+    font-size: 16px;
+    margin: 0;
+    padding: 0;
+  }
+
+  i {
+    font-size:18px;
+    color:red;
+    margin-right:20px;
+    margin-top:6px;
+  }
+
+  .singlePerson {
+    margin-bottom:20px;
+  }
+}
+
+
 .nav {
   iframe {
     float: right;
@@ -300,4 +352,8 @@ a:hover {
   iframe {
     display:none;
   }
+}
+
+.select2-container {
+  width:100% !important;
 }

@@ -1,5 +1,7 @@
 $( document ).ready(function() {
 
+    $('select').select2();
+
 var map = L.map('map').setView([39.1300, -84.5167], 12);
 
 L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
@@ -13,6 +15,8 @@ L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={
 var options = {
     'keepSpiderfied':true
 };
+
+
 
 
 var addToMap = function(result)
@@ -51,7 +55,9 @@ var addToMap = function(result)
           if(point.category.type=='Company')
           {
             var jobsList = "<div class='allJobs'><h2>Jobs</h2>";
+            var peopleList = "<div class='allPeople'><h2>People</h2>";
             var jobs = point.jobs;
+            var people = point.people;
 
             if(jobs.length>0)
             {
@@ -65,13 +71,36 @@ var addToMap = function(result)
             {
               jobsList += '<p>No Jobs Listed</p></div>';
             }
+
+            if(people.length>0)
+            {
+              people.forEach(function(person){
+                peopleList += '<div class="singlePerson"><h4>'+person.name+'</h4>';
+
+                if(person.twitter!=='')
+                {
+                   peopleList += '<a target="_blank" href="http://www.twitter.com/#/'+person.twitter+'"><i class="fa fa-twitter"></i></a>';
+                }
+
+                if(person.linkedin!=='')
+                {
+                  peopleList += '<a target="_blank" href="'+person.linkedin+'"><i class="fa fa-linkedin"></i></a>';
+                }
+              });
+
+              peopleList += "</div>";
+            }
+            else
+            {
+              peopleList += '<p>No People Listed</p></div>';
+            }
           }
           else
           {
             jobsList = "";
           }
 
-          marker.desc = "<b>"+point.name+"</b><p class='content'>"+point.description+"</br><a target='_blank' href='"+point.url+"'>"+point.url+"</a></p>"+jobsList;
+          marker.desc = "<b>"+point.name+"</b><p class='content'>"+point.description+"</br><a target='_blank' href='"+point.url+"'>"+point.url+"</a></p>"+jobsList+peopleList;
           markers.addLayer(marker);
           oms.addMarker(marker);
 

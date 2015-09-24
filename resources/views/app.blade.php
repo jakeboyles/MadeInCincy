@@ -24,6 +24,9 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="css/main.css" />
 
+  <link href="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/css/select2.min.css" rel="stylesheet" />
+
+
   @yield('styles')
   <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -34,7 +37,7 @@
 </head>
 <body>
   <div class="nav container-fluid">
-    <div class="col-md-4 col-xs-6 logo">
+    <div class="col-md-3 col-xs-6 logo">
       <h2>Cincy<span>Tech</span></h2>
     </div>
 
@@ -42,9 +45,15 @@
       <h3>Made with <i class="fa fa-heart"></i> in Cincinnati</h3>
     </div>
 
-    <div class="col-md-4 col-xs-6 right">
+    <div class="col-md-5 col-xs-6 right">
+    
+    <a class="hidden-xs personButton hidden-sm pull-right btn btn-primary" data-toggle="modal" data-target="#addPerson" href="#">Add Person <i class="fa fa-user"></i></a>
+      
       <a class="hidden-xs hidden-sm pull-right btn btn-primary" data-toggle="modal" data-target="#myModal" href="#">Add Listing <i class="fa fa-heart"></i></a>
-      <a class="visible-xs-12 visible-sm-12 hidden-md hidden-lg hidden-xl pull-right btn btn-primary" data-toggle="modal" data-target="#myModal" href="#">Add <i class="fa fa-heart"></i></a>
+      
+      <a class="visible-xs-12 visible-sm-12 hidden-md hidden-lg hidden-xl pull-right btn btn-primary" data-toggle="modal" data-target="#myModal" href="#"><i class="fa fa-home"></i></a>
+
+      <a class="visible-xs-12 visible-sm-12 personMobile hidden-md hidden-lg hidden-xl pull-right btn btn-primary" data-toggle="modal" data-target="#myModal" href="#"><i class="fa fa-user"></i></a>
     </div>
   </div>
 
@@ -93,6 +102,7 @@ woopra.track();
   <script src="http://jawj.github.io/OverlappingMarkerSpiderfier-Leaflet/bin/oms.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
   <script src="js/all.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/js/select2.min.js"></script>
 
   @yield('scripts')
 

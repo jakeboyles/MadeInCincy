@@ -57,5 +57,10 @@ class Company extends Model implements AuthenticatableContract, CanResetPassword
         return $this->hasMany('App\Job');
     }
 
+    public function people()
+    {
+        return $this->hasMany('App\Person');
+    }
+
 
 }

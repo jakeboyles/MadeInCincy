@@ -8,6 +8,7 @@ use App\Company;
 use Illuminate\Http\Request;
 use Mail;
 use App\Category;
+use App\Person;
 
 class HomeController extends Controller
 {
@@ -27,7 +28,7 @@ class HomeController extends Controller
 
     public function getCompanies()
     {
-        $companies = Company::where('status',1)->with('category','jobs')->get();
+        $companies = Company::where('status',1)->with('category','jobs','people')->get();
 
         return response()->json($companies);
     }
@@ -35,14 +36,14 @@ class HomeController extends Controller
 
     public function getCompaniesByType($id)
     {
-        $companies = Company::where('status',1)->where('category_id',$id)->with('category','jobs')->get();
+        $companies = Company::where('status',1)->where('category_id',$id)->with('category','jobs','people')->get();
 
         return response()->json($companies);
     }
 
     public function getCompaniesWithJobs()
     {
-        $companies = Company::where('status',1)->with('category','jobs')->get();
+        $companies = Company::where('status',1)->with('category','jobs','people')->get();
 
         $companiesWithJobs = [];
 
@@ -62,7 +63,7 @@ class HomeController extends Controller
     {
         $request = urldecode($request);
         $companies = Company::search($request)
-            ->with('category','jobs')
+            ->with('category','jobs','people')
             ->get();
 
         return response()->json($companies);
@@ -107,5 +108,43 @@ class HomeController extends Controller
         });
 
         return Redirect('/')->with('message', 'Thanks for adding a listing. It will show on the map once it is approved!');
+    }
+
+
+    public function personStore(Request $request)
+    {
+
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|max:255',
+            'twitter' => '',
+            'linkedin' => '',
+            'company_id' => 'required',
+        ]);
+
+        if ($validator->fails()) {
+            return redirect('/')->withErrors($validator->errors());
+        }
+
+        $person = new Person();
+        $person->name = $request->name;
+        $person->twitter = $request->twitter;
+        $person->linkedin = $request->linkedin;
+        $person->company_id = $request->company_id;
+        $person->save();
+
+        $data = array(
+        'name' => $person->name,
+        );
+
+        Mail::send('email.new', $data, function ($message) {
+
+            $message->from('jake@jibdesigns.com', 'New Person');
+
+            $message->to('jake@jibdesigns.com')->subject('New Person');
+
+        });
+
+        return Redirect('/')->with('message', 'Thanks for adding!');
+
     }
 }

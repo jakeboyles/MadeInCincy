@@ -180,6 +180,75 @@
 
 
 
+ <!-- Modal -->
+<div id="addPerson" data-backdrop="false" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+ <form class="form-horizontal" enctype="multipart/form-data" role="form" method="POST"  action="/person/store">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Add Person</h4>
+      </div>
+      <div class="modal-body">
+
+            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+
+            <div class="form-group">
+                <label class="col-md-4 control-label">Name *</label>
+
+                <div class="col-md-6">
+                    <input type="text" class="form-control" name="name"
+                           value="">
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <label class="col-md-4 control-label">Company *</label>
+
+                <div class="col-md-6">
+                    <select class="form-control" name="company_id">
+                    @foreach($companies as $company)
+                    <option value="{{$company->id}}">{{$company->name}}</option>
+                    @endforeach
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-4 control-label">LinkedIn URL:</label>
+
+                <div class="col-md-6">
+                    <input type="text" class="form-control" name="linkedin"
+                           value="">
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <label class="col-md-4 control-label">Twitter (ex. @jakeboyles)</label>
+
+                <div class="col-md-6">
+                    <input type="text" class="form-control" name="twitter"
+                           value="">
+                </div>
+            </div>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-default">Add</button>
+      </div>
+    </div>
+
+    </form>
+  </div>
+</div>
+
+
+
+
 @endsection
 
 
