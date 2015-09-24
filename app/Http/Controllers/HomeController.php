@@ -126,7 +126,7 @@ class HomeController extends Controller
         }
 
         $person = new Person();
-        $person->name = $request->name;
+        $person->person_name = $request->name;
         $person->twitter = $request->twitter;
         $person->linkedin = $request->linkedin;
         $person->company_id = $request->company_id;
