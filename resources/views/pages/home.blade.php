@@ -217,10 +217,10 @@
             </div>
 
             <div class="form-group">
-                <label class="col-md-4 control-label">LinkedIn URL:</label>
+                <label class="col-md-4 control-label">LinkedIn:</label>
 
                 <div class="col-md-6">
-                    <input type="text" class="form-control" name="linkedin"
+                    <input type="text" placeholder="https://www.linkedin.com/in/jakeboyles" class="form-control" name="linkedin"
                            value="">
                 </div>
             </div>
@@ -230,7 +230,7 @@
                 <label class="col-md-4 control-label">Twitter (ex. jakeboyles)</label>
 
                 <div class="col-md-6">
-                    <input type="text" class="form-control" name="twitter"
+                    <input type="text" placeholder="jakeboyles" class="form-control" name="twitter"
                            value="">
                 </div>
             </div>
