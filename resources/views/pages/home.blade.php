@@ -227,7 +227,7 @@
 
 
             <div class="form-group">
-                <label class="col-md-4 control-label">Twitter (ex. @jakeboyles)</label>
+                <label class="col-md-4 control-label">Twitter (ex. jakeboyles)</label>
 
                 <div class="col-md-6">
                     <input type="text" class="form-control" name="twitter"
