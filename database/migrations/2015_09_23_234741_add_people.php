@@ -16,9 +16,9 @@ class AddPeople extends Migration
             $table->increments('id');
             $table->integer('company_id')->unsigned();
             $table->foreign('company_id')->references('id')->on('companies');
-            $table->string('name')->nullable();
+            $table->string('person_name')->nullable();
             $table->string('linkedin')->nullable();
-            $table->string('facebook')->nullable();
+            $table->string('twitter')->nullable();
             $table->timestamps();
         });
     }

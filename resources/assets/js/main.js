@@ -75,7 +75,7 @@ var addToMap = function(result)
             if(people.length>0)
             {
               people.forEach(function(person){
-                peopleList += '<div class="singlePerson"><h4>'+person.name+'</h4>';
+                peopleList += '<div class="singlePerson"><h4>'+person.person_name+'</h4>';
 
                 if(person.twitter!=='')
                 {
