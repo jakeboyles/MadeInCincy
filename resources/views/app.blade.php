@@ -38,7 +38,7 @@
 <body>
   <div class="nav container-fluid">
     <div class="col-md-3 col-xs-6 logo">
-      <h2>Cincy<span>Tech</span></h2>
+      <h2>Cincy<span>Scene</span></h2>
     </div>
 
     <div class="col-md-4 hidden-xs hidden-sm">
