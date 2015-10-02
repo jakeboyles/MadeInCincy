@@ -19,7 +19,7 @@ var options = {
 
 
 
-var addToMap = function(result)
+var addToMap = function(result, starbucks)
 {
 
   result.forEach(function(point){
@@ -45,6 +45,10 @@ var addToMap = function(result)
           else if(point.category.type=='Coworking Space')
           {
           var marker = new L.Marker(loc, {icon: coworkIcon});
+          }
+          else if(point.category.type=='Starbucks')
+          {
+          var marker = new L.Marker(loc, {icon: coffeeIcon});
           }
           else
           {
@@ -101,7 +105,15 @@ var addToMap = function(result)
           }
 
           marker.desc = "<b>"+point.name+"</b><p class='content'>"+point.description+"</br><a target='_blank' href='"+point.url+"'>"+point.url+"</a></p>"+jobsList+peopleList;
+          
+          if(point.category.type != 'Starbucks')
+          {
           markers.addLayer(marker);
+          }
+          else if(starbucks)
+          {
+            markers.addLayer(marker);
+          }
           oms.addMarker(marker);
 
         })
@@ -168,6 +180,17 @@ var coworkIcon = L.icon({
 });
 
 
+var coffeeIcon = L.icon({
+    iconUrl: 'images/coffee.png',
+
+    iconSize:     [45, 55], // size of the icon
+    shadowSize:   [50, 64], // size of the shadow
+    iconAnchor:   [22, 54], // point of the icon which will correspond to marker's location
+    shadowAnchor: [4, 62],  // the same for the shadow
+    popupAnchor:  [-3, -86] // point from which the popup should open relative to the iconAnchor
+});
+
+
 var popup = new L.Popup();
 oms.addListener('click', function(marker) {
   popup.setContent(marker.desc);
@@ -190,7 +213,27 @@ $(".filter").click(function(){
     $('.wholeSide').css("right",'-200px');
     $(this).removeClass('open')
   }
-})
+});
+
+
+
+cheet('s t a r b u c k s', function () {
+  
+  var search = $(".searchBox").val();
+
+  search = encodeURIComponent(search);
+
+   map.removeLayer(markers);
+   markers = [];
+   markers = new L.FeatureGroup();
+
+  $.ajax({url: "/companies/type/6", success: function(result){
+
+    addToMap(result,true);
+
+  }});
+
+});
 
 
 $(".search").click(function(){
@@ -205,7 +248,7 @@ $(".search").click(function(){
 
   $.ajax({url: "/search/"+search, success: function(result){
 
-    addToMap(result);
+    addToMap(result,false);
 
   }});
 
@@ -222,7 +265,7 @@ $(".getJobs").on("click",function(){
 
        $.ajax({url: "/companies/jobs", success: function(result){
 
-          addToMap(result);
+          addToMap(result,false);
 
       }});
 })
@@ -235,7 +278,7 @@ $(".filterAction").on("click",function(){
 
        $.ajax({url: "/companies/type/"+$(this).data('category'), success: function(result){
 
-          addToMap(result);
+          addToMap(result,false);
 
       }});
 
@@ -243,7 +286,7 @@ $(".filterAction").on("click",function(){
 
 
 $.ajax({url: "/companies", success: function(result){
-    addToMap(result);
+    addToMap(result,false);
 }});
 
 });
