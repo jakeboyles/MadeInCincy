@@ -60,7 +60,7 @@
 
 
     <ul class="dropdown-menu pull-right" aria-labelledby="dropdownMenu1">
-      <li><a data-toggle="modal" data-target="#myModal" href="#">Add Listing <i class="fa fa-heart"></i></a></li>
+      <li><a data-toggle="modal" data-target="#myModal" href="#">Add Company <i class="fa fa-heart"></i></a></li>
       <li><a data-toggle="modal" data-target="#addPerson" href="#">Add Person <i class="fa fa-user"></i></a></li>
       <li><a data-toggle="modal" data-target="#addEats" href="#">Add Eatery <i class="fa fa-cutlery"></i></a></li>
     </ul>
