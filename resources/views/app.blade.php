@@ -5,7 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Cincy.Tech: Let the world see how we have grown!</title>
+  <title>CincyScene.Tech: Let the world see how we have grown!</title>
 
   @section('meta_keywords')
   @show
@@ -45,16 +45,28 @@
       <h3>Made with <i class="fa fa-heart"></i> in Cincinnati</h3>
     </div>
 
-    <div class="col-md-5 col-xs-6 right">
-    
-    <a class="hidden-xs personButton hidden-sm pull-right btn btn-primary" data-toggle="modal" data-target="#addPerson" href="#">Add Person <i class="fa fa-user"></i></a>
-      
-      <a class="hidden-xs hidden-sm pull-right btn btn-primary" data-toggle="modal" data-target="#myModal" href="#">Add Listing <i class="fa fa-heart"></i></a>
-      
-      <a class="visible-xs-12 visible-sm-12 hidden-md hidden-lg hidden-xl pull-right btn btn-primary" data-toggle="modal" data-target="#myModal" href="#"><i class="fa fa-home"></i></a>
 
-      <a class="visible-xs-12 visible-sm-12 personMobile hidden-md hidden-lg hidden-xl pull-right btn btn-primary" data-toggle="modal" data-target="#myModal" href="#"><i class="fa fa-user"></i></a>
-    </div>
+
+
+    <div class="dropdown col-md-5 col-xs-6 right">
+
+    <button class="visible-md visible-lg visible-xl pull-right btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+      Add To Map <i class="fa fa-plus"></i>
+    </button>
+
+    <button class="visible-xs visible-sm pull-right btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+      Add <i class="fa fa-plus"></i>
+    </button>
+
+
+    <ul class="dropdown-menu pull-right" aria-labelledby="dropdownMenu1">
+      <li><a data-toggle="modal" data-target="#myModal" href="#">Add Listing <i class="fa fa-heart"></i></a></li>
+      <li><a data-toggle="modal" data-target="#addPerson" href="#">Add Person <i class="fa fa-user"></i></a></li>
+      <li><a data-toggle="modal" data-target="#addEats" href="#">Add Eatery <i class="fa fa-cutlery"></i></a></li>
+    </ul>
+  </div>
+
+
   </div>
 
   <div class="col-md-4 col-xs-6 right">
@@ -101,7 +113,7 @@ woopra.track();
   <script src="http://cdn.leafletjs.com/leaflet-0.7.5/leaflet.js"></script>
   <script src="http://jawj.github.io/OverlappingMarkerSpiderfier-Leaflet/bin/oms.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-  <script src="https://raw.githubusercontent.com/namuol/cheet.js/master/cheet.min.js"></script>
+  <script src="js/cheet.min.js"></script>
   <script src="js/all.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/js/select2.min.js"></script>
 

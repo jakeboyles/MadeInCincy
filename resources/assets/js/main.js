@@ -50,6 +50,10 @@ var addToMap = function(result, starbucks)
           {
           var marker = new L.Marker(loc, {icon: coffeeIcon});
           }
+          else if(point.category.type=='Eatery')
+          {
+          var marker = new L.Marker(loc, {icon: eateryIcon});
+          }
           else
           {
           var marker = new L.Marker(loc, {icon: companyIcon});
@@ -104,7 +108,23 @@ var addToMap = function(result, starbucks)
             jobsList = "";
           }
 
-          marker.desc = "<b>"+point.name+"</b><p class='content'>"+point.description+"</br><a target='_blank' href='"+point.url+"'>"+point.url+"</a></p>"+jobsList+peopleList;
+          marker.desc = "<b>"+point.name+"</b><p class='content'>"+point.description+"</br>";
+
+          if(typeof point.url !== 'undefined')
+          {
+           marker.desc += "<a target='_blank' href='"+point.url+"'>"+point.url+"</a></p>";
+          }
+
+          if(typeof jobsList !== 'undefined')
+          {
+            marker.desc += jobsList;
+          }
+
+          if(typeof peopleList !== 'undefined')
+          {
+            marker.desc += peopleList;
+          }
+
           
           if(point.category.type != 'Starbucks')
           {
@@ -182,6 +202,17 @@ var coworkIcon = L.icon({
 
 var coffeeIcon = L.icon({
     iconUrl: 'images/coffee.png',
+
+    iconSize:     [45, 55], // size of the icon
+    shadowSize:   [50, 64], // size of the shadow
+    iconAnchor:   [22, 54], // point of the icon which will correspond to marker's location
+    shadowAnchor: [4, 62],  // the same for the shadow
+    popupAnchor:  [-3, -86] // point from which the popup should open relative to the iconAnchor
+});
+
+
+var eateryIcon = L.icon({
+    iconUrl: 'images/eats.png',
 
     iconSize:     [45, 55], // size of the icon
     shadowSize:   [50, 64], // size of the shadow

@@ -111,6 +111,49 @@ class HomeController extends Controller
     }
 
 
+
+    public function eatsStore(Request $request)
+    {
+
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|unique:companies|max:255',
+            'description' => 'required',
+            'lat' => 'required',
+            'long' => 'required',
+            'url' => '',
+        ]);
+
+        if ($validator->fails()) {
+            return redirect('/')->withErrors($validator->errors());
+        }
+
+        $eats = new Company();
+        $eats->name = $request->name;
+        $eats->description = $request->description;
+        $eats->lat = $request->lat;
+        $eats->long = $request->long;
+        $eats->status = 1;
+        $eats->url = $request->url;
+        $eats->category_id = 7;
+        $eats->save();
+
+        $data = array(
+        'name' => $eats->name,
+        );
+
+        Mail::send('email.new', $data, function ($message) {
+
+            $message->from('jake@jibdesigns.com', 'New Listing');
+
+            $message->to('jake@jibdesigns.com')->subject('New Eatery');
+
+        });
+
+        return Redirect('/')->with('message', 'Thanks for adding an eatery!');
+    }
+
+
+
     public function personStore(Request $request)
     {
 

@@ -76,6 +76,13 @@
         </a>
       </div>
 
+      <div class="filterSingle">
+        <a href="#" data-category='7' class="filterAction">
+          <img src="images/eats.png">
+          <h3>Eatery</h3>
+        </a>
+      </div>
+
 
 
 
@@ -232,6 +239,81 @@
                 <div class="col-md-6">
                     <input type="text" placeholder="jakeboyles" class="form-control" name="twitter"
                            value="">
+                </div>
+            </div>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-default">Add</button>
+      </div>
+    </div>
+
+    </form>
+  </div>
+</div>
+
+
+
+
+
+
+ <!-- Modal -->
+<div id="addEats" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+ <form class="form-horizontal" enctype="multipart/form-data" role="form" method="POST"  action="/eats/store">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Add Eatery</h4>
+      </div>
+      <div class="modal-body">
+
+            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+
+            <div class="form-group">
+                <label class="col-md-4 control-label">Name *</label>
+
+                <div class="col-md-6">
+                    <input type="text" class="form-control" name="name"
+                           value="">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-4 control-label">Description *</label>
+
+                <div class="col-md-6">
+                    <textarea class="form-control" name="description"
+                           value=""></textarea>
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <label class="col-md-4 control-label">Lat * <a target="_blank" href="http://www.latlong.net/convert-address-to-lat-long.html">Try This</a></label>
+
+                <div class="col-md-6">
+                <input type="text" class="form-control" name="lat" value="">
+
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <label class="col-md-4 control-label">Long *</label>
+                <div class="col-md-6">
+                <input type="text" class="form-control" name="long" value="">
+                </div>
+            </div>
+
+
+             <div class="form-group">
+                <label class="col-md-4 control-label">URL (http://example.com)</label>
+
+                <div class="col-md-6">
+                <input type="text" class="form-control" name="url" value="">
                 </div>
             </div>
 
