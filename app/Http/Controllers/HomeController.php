@@ -116,7 +116,7 @@ class HomeController extends Controller
     {
 
         $validator = Validator::make($request->all(), [
-            'name' => 'required|unique:companies|max:255',
+            'name' => 'required|max:255',
             'description' => 'required',
             'lat' => 'required',
             'long' => 'required',
